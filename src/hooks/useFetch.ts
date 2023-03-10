@@ -4,6 +4,8 @@ import axios from 'axios';
 const BASE_URL = `https://api.spoonacular.com/recipes/716429/information?apiKey=e02ae539b1a1446ab147f445c019d23c&includeNutrition=true`;
 const DEFAULT_PARAMS = ``;
 
+const AUTOCOMPLETE_INGREDIENT_AUTOCOMPLETE_BASE = `https://api.spoonacular.com/food/ingredients/autocomplete`;
+
 const useFetch = params => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -15,7 +17,6 @@ const useFetch = params => {
 
       try {
         const res = await axios.get(`${BASE_URL}${DEFAULT_PARAMS}`);
-        // console.log('RES???', res.data);
         setData(res.data);
         setLoading(false);
       } catch (err) {
