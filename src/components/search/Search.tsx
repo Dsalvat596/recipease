@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {
   Text,
-  TextInput,
   View,
   Keyboard,
-  Button,
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
@@ -12,8 +10,7 @@ import {
 import axios from 'axios';
 import Autocomplete from 'react-native-autocomplete-input';
 
-const ADD_ITEM = 'ADD_ITEM';
-const DELETE_ITEM = 'DELETE_ITEM';
+import {Ingredient, Operation} from '../../types';
 
 const Search = props => {
   // For Main Data
@@ -21,10 +18,13 @@ const Search = props => {
   // For Filtered Data
   const [query, setQuery] = useState('');
   // For Selected Data
-  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>(
+    [],
+  );
 
-  const updateSelection = (item, operation) => {
-    if (operation === ADD_ITEM) {
+  const updateSelection = (item: Ingredient, operation: Operation) => {
+    if (operation === Operation.ADD_ITEM) {
+      setSelectedIngredients(ings => [...ings, item]);
     } else {
     }
   };
@@ -34,12 +34,11 @@ const Search = props => {
       `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=e02ae539b1a1446ab147f445c019d23c&query=${query}&number=5`,
     );
 
-    console.log('RESSSSS', res);
+    // console.log('RESSSSS', res);
 
     setData(res.data);
   };
 
-  console.log('DATA GOD DAMMIT', data);
   useEffect(() => {
     if (query.length >= 3) {
       try {
@@ -71,12 +70,12 @@ const Search = props => {
           clearButtonMode={'always'}
           //   defaultValue={defaultText}
           keyboardType={'ascii-capable'}
-          style={{
-            height: 40,
-          }}
+          // style={{
+          //   height: 40,
+          // }}
           autoCorrect={false}
           containerStyle={styles.autocompleteContainer}
-          listStyle={{maxHeight: 300}}
+          // listStyle={{maxHeight: 300}}
           data={data}
           inputContainerStyle={styles.autocompleteContainer}
           listContainerStyle={styles.searchResults}
@@ -89,7 +88,7 @@ const Search = props => {
               query.length > 2 ? (
                 <TouchableOpacity
                   onPress={() => {
-                    updateSelection(item, ADD_ITEM);
+                    updateSelection(item, Operation.ADD_ITEM);
                   }}>
                   <Text style={styles.searchItem}>{item.name}</Text>
                 </TouchableOpacity>
@@ -98,15 +97,19 @@ const Search = props => {
         />
 
         <View style={styles.descriptionContainer}>
-          {data.length > 0 ? (
+          {selectedIngredients.length > 0 ? (
             <>
               <Text style={styles.infoText}>Selected Data</Text>
-              <Text style={styles.infoText}>
-                {/* {JSON.stringify(selectedValue)} */}
-              </Text>
+              <View style={styles.ingredientsList}>
+                {selectedIngredients.map(item => (
+                  <TouchableOpacity style={styles.ingredientsListItem}>
+                    <Text style={styles.ingredientText}>{item.name}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
             </>
           ) : (
-            <Text style={styles.infoText}>Enter The Film Title</Text>
+            <Text style={styles.infoText}>What Ingredients Do You Have?</Text>
           )}
         </View>
       </View>
@@ -119,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     flex: 1,
     paddingHorizontal: 18,
-    // marginTop: 40,
+    marginTop: 40,
   },
   autocompleteContainer: {
     backgroundColor: '#ffffff',
@@ -137,9 +140,25 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     margin: 2,
   },
+  ingredientsList: {
+    alignItems: 'center',
+  },
+  ingredientsListItem: {
+    backgroundColor: '#136c72',
+    marginVertical: 5,
+    padding: 10,
+    width: '70%',
+    borderRadius: 25,
+  },
+  ingredientText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#FFF',
+  },
   infoText: {
     textAlign: 'center',
     fontSize: 16,
+    color: '#h3h3h3',
   },
   searchResults: {},
 });
