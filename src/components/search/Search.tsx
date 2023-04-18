@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
+import useFetch from '../../hooks/useFetch';
 import Autocomplete from 'react-native-autocomplete-input';
 
 import {Ingredient, Operation} from '../../types';
@@ -31,7 +32,7 @@ const Search = props => {
 
   const fetchData = async () => {
     const res = await axios.get(
-      `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=e02ae539b1a1446ab147f445c019d23c&query=${query}&number=5`,
+      `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=e02ae539b1a1446ab147f445c019d23c&query=${query}&number=6`,
     );
 
     // console.log('RESSSSS', res);

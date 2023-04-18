@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
+import Config from 'react-native-config';
 
-const BASE_URL = `https://api.spoonacular.com/recipes/716429/information?apiKey=e02ae539b1a1446ab147f445c019d23c&includeNutrition=true`;
+const BASE_URL = `https://api.spoonacular.com/recipes/716429/information?apiKey=${Config.API_KEY}&includeNutrition=true`;
 const DEFAULT_PARAMS = ``;
 
-const AUTOCOMPLETE_INGREDIENT_AUTOCOMPLETE_BASE = `https://api.spoonacular.com/food/ingredients/autocomplete`;
+const AUTOCOMPLETE_INGREDIENT_AUTOCOMPLETE_BASE = `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${Config.API_KEY}&query=`;
 
 const useFetch = params => {
   const [data, setData] = useState(null);
