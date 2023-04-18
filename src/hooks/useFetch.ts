@@ -7,13 +7,18 @@ const DEFAULT_PARAMS = ``;
 
 const AUTOCOMPLETE_INGREDIENT_AUTOCOMPLETE_BASE = `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${Config.API_KEY}&query=`;
 
-const useFetch = params => {
-  const [data, setData] = useState(null);
+enum Action {
+  INGREDIENT_AUTOCOMPLETE_SEARCH = 'INGREDIENT_AUTOCOMPLETE_SEARCH',
+  RECIPE_SEARCH = 'RECIPE_SEARCH',
+}
+
+const useFetch = (action?: Action, queryParams?: string | string[]) => {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState('');
 
   const fetchData = useCallback(async () => {
-    if (!params) {
+    if (!queryParams) {
       setLoading(true);
 
       try {
@@ -26,19 +31,23 @@ const useFetch = params => {
         setError(JSON.stringify(err));
       }
     } else {
-      try {
-        const res = await axios.get(`${BASE_URL}${params}`);
-        // console.log('ELSE RES???', res.data);
-      } catch (err) {
-        console.error(err);
-        // setError(err.message);
+      if (action === Action.INGREDIENT_AUTOCOMPLETE_SEARCH) {
+        try {
+          const res = await axios.get(
+            `${AUTOCOMPLETE_INGREDIENT_AUTOCOMPLETE_BASE}${queryParams}&number=6`,
+          );
+          setData(res.data);
+        } catch (err) {
+          console.error(err);
+          // setError(err.message);
+        }
       }
     }
-  }, [params]);
+  }, [action, queryParams]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return {data, loading, error};
 };

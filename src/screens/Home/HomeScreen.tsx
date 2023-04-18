@@ -4,9 +4,9 @@ import useFetch from '../../hooks/useFetch';
 import Search from '../../components/search';
 
 const HomeScreen = () => {
-  const {data, loading, error} = useFetch(null);
+  const {data, loading, error} = useFetch('');
 
-  console.log('ROIB???', data, loading, error);
+  // console.log('ROIB???', data, loading, error);
 
   return (
     <View

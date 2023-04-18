@@ -7,21 +7,38 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import axios from 'axios';
 import useFetch from '../../hooks/useFetch';
 import Autocomplete from 'react-native-autocomplete-input';
-
 import {Ingredient, Operation} from '../../types';
 
+enum Action {
+  INGREDIENT_AUTOCOMPLETE_SEARCH = 'INGREDIENT_AUTOCOMPLETE_SEARCH',
+  RECIPE_SEARCH = 'RECIPE_SEARCH',
+}
+
+export type FetchParams = {
+  action: Action;
+  queryParams: string | string[];
+};
+
 const Search = props => {
-  // For Main Data
-  const [data, setData] = useState([]);
+  const [fetchParams, setFetchParams] = useState<string | string[]>();
+  const [fetchAction, setFetchAction] = useState<Action>(
+    Action.INGREDIENT_AUTOCOMPLETE_SEARCH,
+  );
+
   // For Filtered Data
   const [query, setQuery] = useState('');
   // For Selected Data
   const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>(
     [],
   );
+
+  const {
+    data: fetchedData,
+    loading,
+    error,
+  } = useFetch(fetchAction, fetchParams);
 
   const updateSelection = (item: Ingredient, operation: Operation) => {
     if (operation === Operation.ADD_ITEM) {
@@ -30,38 +47,16 @@ const Search = props => {
     }
   };
 
-  const fetchData = async () => {
-    const res = await axios.get(
-      `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=e02ae539b1a1446ab147f445c019d23c&query=${query}&number=6`,
-    );
-
-    // console.log('RESSSSS', res);
-
-    setData(res.data);
-  };
-
   useEffect(() => {
     if (query.length >= 3) {
       try {
-        fetchData();
+        setFetchAction(Action.INGREDIENT_AUTOCOMPLETE_SEARCH);
+        setFetchParams(query);
       } catch (e) {
         console.error(e);
       }
     }
   }, [query]);
-
-  //   const findFilm = query => {
-  //     // Method called every time when we change the value of the input
-  //     if (query) {
-  //       // Making a case insensitive regular expression
-  //       const regex = new RegExp(`${query.trim()}`, 'i');
-  //       // Setting the filtered film array according the query
-  //       setFilteredFilms(films.filter(film => film.title.search(regex) >= 0));
-  //     } else {
-  //       // If the query is null then  return blank
-  //       setFilteredFilms([]);
-  //     }
-  //   };
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -77,7 +72,7 @@ const Search = props => {
           autoCorrect={false}
           containerStyle={styles.autocompleteContainer}
           // listStyle={{maxHeight: 300}}
-          data={data}
+          data={fetchedData}
           inputContainerStyle={styles.autocompleteContainer}
           listContainerStyle={styles.searchResults}
           onChangeText={text => setQuery(text)}
