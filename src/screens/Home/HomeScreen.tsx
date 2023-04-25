@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import useFetch from '../../hooks/useFetch';
 import Search from '../../components/search';
 
@@ -9,17 +9,20 @@ const HomeScreen = () => {
   // console.log('ROIB???', data, loading, error);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={styles.container}>
       {loading && <Text>{'LOADING.......>~~~~~~~~'}</Text>}
       {!loading && <Search />}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default HomeScreen;

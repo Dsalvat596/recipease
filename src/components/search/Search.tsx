@@ -10,6 +10,7 @@ import {
 import useFetch from '../../hooks/useFetch';
 import Autocomplete from 'react-native-autocomplete-input';
 import {Ingredient, Operation} from '../../types';
+import {Fonts, Colors} from '../../themes/styles';
 
 enum Action {
   INGREDIENT_AUTOCOMPLETE_SEARCH = 'INGREDIENT_AUTOCOMPLETE_SEARCH',
@@ -103,6 +104,11 @@ const Search = props => {
                   </TouchableOpacity>
                 ))}
               </View>
+              <View>
+                <TouchableOpacity style={styles.actionButton}>
+                  <Text style={styles.actionText}>{`FIND RECIPES`}</Text>
+                </TouchableOpacity>
+              </View>
             </>
           ) : (
             <Text style={styles.infoText}>What Ingredients Do You Have?</Text>
@@ -115,13 +121,13 @@ const Search = props => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: Colors.SECONDARY_COLOR,
     flex: 1,
     paddingHorizontal: 18,
-    marginTop: 40,
+    paddingVertical: 40,
   },
   autocompleteContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.BG_LIGHT,
     borderWidth: 1,
     borderColor: 'lightgrey',
   },
@@ -129,9 +135,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  searchItem: {color: '#h3h3h3'},
+  searchItem: {color: Colors.TEXT_DARK},
   itemText: {
-    fontSize: 15,
+    fontSize: Fonts.FONT_SIZE_MEDIUM,
     paddingTop: 5,
     paddingBottom: 5,
     margin: 2,
@@ -140,7 +146,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   ingredientsListItem: {
-    backgroundColor: '#136c72',
+    backgroundColor: Colors.PRIMARY_COLOR,
     marginVertical: 5,
     padding: 10,
     width: '70%',
@@ -148,13 +154,27 @@ const styles = StyleSheet.create({
   },
   ingredientText: {
     textAlign: 'center',
-    fontSize: 16,
-    color: '#FFF',
+    fontSize: Fonts.FONT_SIZE_MEDIUM,
+    color: Colors.TEXT_LIGHT,
+  },
+  actionButton: {
+    backgroundColor: Colors.ACTION_COLOR,
+    padding: 15,
+    marginVertical: 8,
+    width: '70%',
+    borderRadius: 25,
+    alignSelf: 'center',
+  },
+  actionText: {
+    textAlign: 'center',
+    fontSize: Fonts.FONT_SIZE_LARGE,
+    fontWeight: Fonts.FONT_WEIGHT_HEAVY,
+    color: Colors.TEXT_LIGHT,
   },
   infoText: {
     textAlign: 'center',
-    fontSize: 16,
-    color: '#h3h3h3',
+    fontSize: Fonts.FONT_SIZE_MEDIUM,
+    color: Colors.TEXT_DARK,
   },
   searchResults: {},
 });

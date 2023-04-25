@@ -1,0 +1,19 @@
+export const Fonts = {
+  FONT_SIZE_SMALL: 12,
+  FONT_SIZE_MEDIUM: 16,
+  FONT_SIZE_LARGE: 18,
+
+  FONT_WEIGHT_LIGHT: '200',
+  FONT_WEIGHT_MEDIUM: '600',
+  FONT_WEIGHT_HEAVY: '800',
+};
+
+export const Colors = {
+  PRIMARY_COLOR: '#51db7b',
+  SECONDARY_COLOR: '#f2ec74',
+  ACTION_COLOR: '#db402c',
+  BG_LIGHT: '#f5f4ed',
+  BG_DARK: '#636362',
+  TEXT_DARK: '#h3h3h3',
+  TEXT_LIGHT: '#FFFFFF',
+};

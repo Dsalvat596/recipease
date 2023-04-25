@@ -14,7 +14,7 @@ const Router: FC = () => {
           component={HomeScreen}
           options={{
             headerShown: true,
-            title: 'AYY CHOLO',
+            title: 'RecipEZ',
           }}
         />
       </Stack.Navigator>
