@@ -106,7 +106,7 @@ const Search = props => {
               </View>
               <View>
                 <TouchableOpacity style={styles.actionButton}>
-                  <Text style={styles.actionText}>{`FIND RECIPES`}</Text>
+                  <Text style={styles.actionText}>{'FIND RECIPES'}</Text>
                 </TouchableOpacity>
               </View>
             </>
