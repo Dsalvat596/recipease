@@ -1,17 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import useFetch from '../../hooks/useFetch';
 import Search from '../../components/search';
+import {Action} from '../../components/search/Search';
 
 const HomeScreen = () => {
-  const {data, loading, error} = useFetch('');
+  const [recipeQuery, setRecipeQuery] = useState<string>('');
 
-  // console.log('ROIB???', data, loading, error);
+  const updateRecipeSearch = (queryString: string) => {
+    setRecipeQuery(queryString);
+  };
+
+  const {
+    data: fetchedData,
+    loading,
+    error,
+  } = useFetch(Action.RECIPE_SEARCH, recipeQuery);
 
   return (
     <View style={styles.container}>
       {loading && <Text>{'LOADING.......>~~~~~~~~'}</Text>}
-      {!loading && <Search />}
+      {!loading && <Search updateRecipeSearch={updateRecipeSearch} />}
     </View>
   );
 };
