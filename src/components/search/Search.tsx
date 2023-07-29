@@ -22,7 +22,11 @@ export type FetchParams = {
   queryParams: string | string[];
 };
 
-const Search = props => {
+interface SearchProps {
+  updateRecipeSearch: (recipeStr: string) => void;
+}
+
+const Search = (props: SearchProps) => {
   const [fetchParams, setFetchParams] = useState<string | string[]>();
   const [fetchAction, setFetchAction] = useState<Action>(
     Action.INGREDIENT_AUTOCOMPLETE_SEARCH,
@@ -104,8 +108,10 @@ const Search = props => {
             <>
               <Text style={styles.infoText}>Selected Data</Text>
               <View style={styles.ingredientsList}>
-                {selectedIngredients.map(item => (
-                  <TouchableOpacity style={styles.ingredientsListItem}>
+                {selectedIngredients.map((item, idx) => (
+                  <TouchableOpacity
+                    key={`item+${idx}`}
+                    style={styles.ingredientsListItem}>
                     <Text style={styles.ingredientText}>{item.name}</Text>
                   </TouchableOpacity>
                 ))}
