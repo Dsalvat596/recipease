@@ -14,23 +14,24 @@ enum Action {
 }
 
 const useFetch = (action?: Action, queryParams?: string | string[]) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Array<any>>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState('');
 
   const fetchData = useCallback(async () => {
     if (!queryParams) {
-      setLoading(true);
+      // setLoading(true);
 
-      try {
-        const res = await axios.get(`${BASE_URL}${DEFAULT_PARAMS}`);
-        setData(res.data);
-        setLoading(false);
-      } catch (err) {
-        console.error('OI THERES AN ERROR!!!!', err);
-        setLoading(false);
-        setError(JSON.stringify(err));
-      }
+      // try {
+      //   const res = await axios.get(`${BASE_URL}${DEFAULT_PARAMS}`);
+      //   setData(res.data);
+      //   setLoading(false);
+      // } catch (err) {
+      //   console.error('OI THERES AN ERROR!!!!', err);
+      //   setLoading(false);
+      //   setError(JSON.stringify(err));
+      // }
+      return;
     } else {
       if (action === Action.INGREDIENT_AUTOCOMPLETE_SEARCH) {
         try {
@@ -49,6 +50,7 @@ const useFetch = (action?: Action, queryParams?: string | string[]) => {
             const res = await axios.get(
               `${GET_RECIPE_BY_INGREDIENTS_BASE}${queryParams}&number=5&ranking=1`,
             );
+
             setData(res.data);
             setLoading(false);
           } catch (err) {
