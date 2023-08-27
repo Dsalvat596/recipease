@@ -2,6 +2,8 @@ import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import HomeScreen from './Home';
+import RecipeResultsScreen from './RecipeResults/RecipeResultsScreen';
+import RecipeDetailScreen from './RecipeDetail/RecipeDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,8 +15,22 @@ const Router: FC = () => {
           name="main"
           component={HomeScreen}
           options={{
-            headerShown: true,
-            title: 'RecipEZ',
+            headerTitle: 'RECIPEZ',
+            headerBackButtonMenuEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name="RecipeResults"
+          component={RecipeResultsScreen}
+          options={{
+            headerBackButtonMenuEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name="RecipeDetail"
+          component={RecipeDetailScreen}
+          options={{
+            headerBackButtonMenuEnabled: true,
           }}
         />
       </Stack.Navigator>

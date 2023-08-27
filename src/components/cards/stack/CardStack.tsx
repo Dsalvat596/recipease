@@ -41,42 +41,42 @@ const CardStack: FC<CardStackProps> = props => {
         disableBottomSwipe={true}
         animateOverlayLabelsOpacity={true}
         animateCardOpacity={true}
-        overlayLabels={{
-          left: {
-            title: 'NOPE',
-            style: {
-              label: {
-                backgroundColor: colors.red,
-                color: colors.white,
-                fontSize: 24,
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                justifyContent: 'flex-start',
-                margingTop: 20,
-                marginLeft: -20,
-              },
-            },
-          },
-          right: {
-            title: 'YES',
-            style: {
-              label: {
-                backgroundColor: colors.blue,
-                color: colors.white,
-                fontSize: 24,
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'flex-start',
-                margingTop: 20,
-                marginLeft: 20,
-              },
-            },
-          },
-        }}
+        // overlayLabels={{
+        //   left: {
+        //     title: 'NOPE',
+        //     style: {
+        //       label: {
+        //         backgroundColor: colors.red,
+        //         color: colors.white,
+        //         fontSize: 24,
+        //       },
+        //       wrapper: {
+        //         flexDirection: 'column',
+        //         alignItems: 'flex-end',
+        //         justifyContent: 'flex-start',
+        //         margingTop: 20,
+        //         marginLeft: -20,
+        //       },
+        //     },
+        //   },
+        //   right: {
+        //     title: 'YES',
+        //     style: {
+        //       label: {
+        //         backgroundColor: colors.blue,
+        //         color: colors.white,
+        //         fontSize: 24,
+        //       },
+        //       wrapper: {
+        //         flexDirection: 'column',
+        //         alignItems: 'flex-start',
+        //         justifyContent: 'flex-start',
+        //         margingTop: 20,
+        //         marginLeft: 20,
+        //       },
+        //     },
+        //   },
+        // }}
       />
     </View>
   );

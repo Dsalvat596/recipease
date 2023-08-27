@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, FC} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import useFetch from '../../hooks/useFetch';
 import Search from '../../components/search';
 import CardStack from '../../components/cards/stack/CardStack';
+import {StackScreenProps} from '@react-navigation/stack';
+
 import {Action} from '../../components/search/Search';
 import {mockRecipeData} from '../../data';
-import {Recipe} from '../../types';
+import {Recipe, MainStackParamList, Navigation} from '../../types';
 
-const HomeScreen = () => {
+const HomeScreen: FC<StackScreenProps<MainStackParamList>> = ({navigation}) => {
   const [recipeQuery, setRecipeQuery] = useState<string>('');
 
-  const updateRecipeSearch = (queryString: string) => {
-    setRecipeQuery(queryString);
-  };
+  const dummyDataForNow: Array<Recipe> = mockRecipeData;
 
   const {
     data: fetchedData,
@@ -20,19 +20,21 @@ const HomeScreen = () => {
     error,
   } = useFetch(Action.RECIPE_SEARCH, recipeQuery);
 
-  const dummyDataForNow: Array<Recipe> = mockRecipeData;
+  const updateRecipeSearch = (queryString: string) => {
+    setRecipeQuery(() => queryString);
+  };
+
+  useEffect(() => {
+    if (!loading && !!recipeQuery && fetchedData && fetchedData.length > 0) {
+      navigation.navigate(Navigation.RecipeResults, {data: fetchedData});
+    }
+  }, [recipeQuery, fetchedData, loading]);
 
   return (
     <View style={styles.container}>
       {loading && <Text>{'LOADING.......>~~~~~~~~'}</Text>}
-      {/* {!loading && !recipeQuery && (
+      {!loading && !recipeQuery && (
         <Search updateRecipeSearch={updateRecipeSearch} />
-      )} */}
-      {/* {!loading && !!recipeQuery && fetchedData && fetchedData.length > 0 && (
-        <CardStack data={fetchedData} />
-      )} */}
-      {!loading && dummyDataForNow && dummyDataForNow.length > 0 && (
-        <CardStack data={dummyDataForNow} />
       )}
     </View>
   );

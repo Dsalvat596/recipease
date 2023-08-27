@@ -1,4 +1,4 @@
-import React, {type PropsWithChildren} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {StatusBar, useColorScheme} from 'react-native';
 

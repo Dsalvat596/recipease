@@ -1,3 +1,7 @@
+export type MainStackParamList = {
+  RecipeResults: {data: Array<Recipe>};
+};
+
 export type Ingredient = {
   id?: number;
   name: string;
@@ -30,3 +34,9 @@ export type Recipe = {
   usedIngredientCount?: number;
   usedIngredients?: Array<Ingredient>;
 };
+
+export enum Navigation {
+  HomeScreen = 'HomeScreen',
+  RecipeResults = 'RecipeResults',
+  RecipeDetail = 'RecipeDetail',
+}
