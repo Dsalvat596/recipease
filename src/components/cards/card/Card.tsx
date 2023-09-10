@@ -2,7 +2,9 @@ import React, {FC, useEffect, useState} from 'react';
 import {View, StyleSheet, Text, Image, ImageBackground} from 'react-native';
 import {Recipe} from '../../../types';
 import {Fonts, Colors} from '../../../themes/styles';
+import {useNavigation} from '@react-navigation/native';
 import {Button} from 'react-native-elements';
+import {Navigation} from '../../../types';
 
 interface CardProps {
   data: Recipe;
@@ -19,11 +21,18 @@ const Card: FC<CardProps> = ({data}) => {
     unusedIngredients,
   } = data;
 
+  const navigation = useNavigation();
+
   return (
     <View style={styles.card}>
       <Image source={{uri: image}} style={styles.cardImage} />
       <Text style={styles.recipeTitle}>{title}</Text>
-      <Button title={'Go to Recipe'} />
+      <Button
+        title={'Go to Recipe'}
+        onPress={() =>
+          navigation.navigate(Navigation.RecipeDetail, {data: data})
+        }
+      />
     </View>
   );
 };
