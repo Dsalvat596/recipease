@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RecipezRNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RecipezRNTests.m */; };
-		018C5BB629EF2E0A00B7E2E7 /* libreact-native-config.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 018C5BB529EF2E0A00B7E2E7 /* libreact-native-config.a */; };
 		0C80B921A6F3F58F76C31292 /* libPods-RecipezRN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-RecipezRN.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -25,28 +24,12 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = RecipezRN;
 		};
-		018C5BB129EF2D2E00B7E2E7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 018C5BAC29EF2D2E00B7E2E7 /* ReactNativeConfig.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
-			remoteInfo = ReactNativeConfig;
-		};
-		018C5BB329EF2D2E00B7E2E7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 018C5BAC29EF2D2E00B7E2E7 /* ReactNativeConfig.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
-			remoteInfo = "ReactNativeConfig-tvOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* RecipezRNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipezRNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RecipezRNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipezRNTests.m; sourceTree = "<group>"; };
-		018C5BAC29EF2D2E00B7E2E7 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
-		018C5BB529EF2E0A00B7E2E7 /* libreact-native-config.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-config.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* RecipezRN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipezRN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RecipezRN/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = RecipezRN/AppDelegate.mm; sourceTree = "<group>"; };
@@ -76,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018C5BB629EF2E0A00B7E2E7 /* libreact-native-config.a in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-RecipezRN.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,15 +83,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		018C5BAD29EF2D2E00B7E2E7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				018C5BB229EF2D2E00B7E2E7 /* libRNCConfig.a */,
-				018C5BB429EF2D2E00B7E2E7 /* libRNCConfig-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* RecipezRN */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +99,6 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				018C5BB529EF2E0A00B7E2E7 /* libreact-native-config.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-RecipezRN.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-RecipezRN-RecipezRNTests.a */,
@@ -137,7 +109,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				018C5BAC29EF2D2E00B7E2E7 /* ReactNativeConfig.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -251,12 +222,6 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 018C5BAD29EF2D2E00B7E2E7 /* Products */;
-					ProjectRef = 018C5BAC29EF2D2E00B7E2E7 /* ReactNativeConfig.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* RecipezRN */,
@@ -264,25 +229,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		018C5BB229EF2D2E00B7E2E7 /* libRNCConfig.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			name = libRNCConfig.a;
-			path = libReactNativeConfig.a;
-			remoteRef = 018C5BB129EF2D2E00B7E2E7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		018C5BB429EF2D2E00B7E2E7 /* libRNCConfig-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			name = "libRNCConfig-tvOS.a";
-			path = "libReactNativeConfig-tvOS.a";
-			remoteRef = 018C5BB329EF2D2E00B7E2E7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -541,59 +487,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
-					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
-					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
-					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
-					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
-					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
-					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
-					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
-					"\"${PODS_ROOT}/Headers/Public/RNVectorIcons\"",
-					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
-					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
-					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
-					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
-					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
-					"\"${PODS_ROOT}/Headers/Public/React-bridging\"",
-					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
-					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
-					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
-					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
-					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
-					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
-					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
-					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
-					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
-					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
-					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
-					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
-					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
-					"\"${PODS_ROOT}/Headers/Public/fmt\"",
-					"\"${PODS_ROOT}/Headers/Public/glog\"",
-					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
-					"\"${PODS_ROOT}/Headers/Public/libevent\"",
-					"\"${PODS_ROOT}/Headers/Public/react-native-config\"",
-					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
-					"\"$(PODS_ROOT)/DoubleConversion\"",
-					"\"$(PODS_ROOT)/boost\"",
-					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
-					"\"$(PODS_TARGET_SRCROOT)/include/\"",
-					"\"$(SRCROOT)/../node_modules/react-native-config/ios/**\"",
-				);
 				INFOPLIST_FILE = RecipezRN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -614,59 +513,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
-					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
-					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
-					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
-					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
-					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
-					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
-					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
-					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
-					"\"${PODS_ROOT}/Headers/Public/RNVectorIcons\"",
-					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
-					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
-					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
-					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
-					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
-					"\"${PODS_ROOT}/Headers/Public/React-bridging\"",
-					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
-					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
-					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
-					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
-					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
-					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
-					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
-					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
-					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
-					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
-					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
-					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
-					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
-					"\"${PODS_ROOT}/Headers/Public/fmt\"",
-					"\"${PODS_ROOT}/Headers/Public/glog\"",
-					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
-					"\"${PODS_ROOT}/Headers/Public/libevent\"",
-					"\"${PODS_ROOT}/Headers/Public/react-native-config\"",
-					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
-					"\"$(PODS_ROOT)/DoubleConversion\"",
-					"\"$(PODS_ROOT)/boost\"",
-					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
-					"\"$(PODS_TARGET_SRCROOT)/include/\"",
-					"\"$(SRCROOT)/../node_modules/react-native-config/ios/**\"",
-				);
 				INFOPLIST_FILE = RecipezRN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -740,6 +592,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -804,6 +657,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
