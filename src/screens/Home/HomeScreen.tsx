@@ -25,9 +25,9 @@ const HomeScreen: FC<StackScreenProps<MainStackParamList>> = ({navigation}) => {
   };
 
   useEffect(() => {
-    // if (!loading && !!recipeQuery && fetchedData && fetchedData.length > 0) {
-    navigation.navigate(Navigation.RecipeResults, {data: dummyDataForNow});
-    // }
+    if (!loading && !!recipeQuery && fetchedData && fetchedData.length > 0) {
+      navigation.navigate(Navigation.RecipeResults, {data: fetchedData});
+    }
   }, [recipeQuery, fetchedData, loading]);
 
   return (

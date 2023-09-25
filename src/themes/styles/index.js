@@ -14,6 +14,6 @@ export const Colors = {
   ACTION_COLOR: '#db402c',
   BG_LIGHT: '#f5f4ed',
   BG_DARK: '#636362',
-  TEXT_DARK: '#h3h3h3',
+  TEXT_DARK: '#5A5A5A',
   TEXT_LIGHT: '#FFFFFF',
 };
