@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './Home';
 import RecipeResultsScreen from './RecipeResults/RecipeResultsScreen';
 import RecipeDetailScreen from './RecipeDetail/RecipeDetailScreen';
+import ShoppingList from './ShoppingList/ShoppingList';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,13 @@ const Router: FC = () => {
         <Stack.Screen
           name="RecipeDetail"
           component={RecipeDetailScreen}
+          options={{
+            headerBackButtonMenuEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name="ShoppingList"
+          component={ShoppingList}
           options={{
             headerBackButtonMenuEnabled: true,
           }}

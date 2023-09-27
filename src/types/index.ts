@@ -1,6 +1,7 @@
 export type MainStackParamList = {
   RecipeResults: {data: Array<Recipe>};
   RecipeDetail: {data: Recipe};
+  ShoppingList: {data: Array<Ingredient>};
 };
 
 export type Ingredient = {
@@ -16,6 +17,10 @@ export type Ingredient = {
   unitLong?: string;
   unitShort?: string;
 };
+
+export interface FormattedIngredient extends Ingredient {
+  used: boolean;
+}
 
 export enum Operation {
   ADD_ITEM = 'ADD_ITEM',
@@ -40,4 +45,5 @@ export enum Navigation {
   HomeScreen = 'HomeScreen',
   RecipeResults = 'RecipeResults',
   RecipeDetail = 'RecipeDetail',
+  ShoppingList = 'ShoppingList',
 }

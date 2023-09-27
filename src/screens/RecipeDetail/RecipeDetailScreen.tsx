@@ -1,25 +1,15 @@
-import React, {useState, useEffect, FC} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import useFetch from '../../hooks/useFetch';
-import Search from '../../components/search';
-import CardStack from '../../components/cards/stack/CardStack';
-import {Action} from '../../components/search/Search';
+import React, {useState, useEffect, useCallback, FC} from 'react';
+import {View, Text, StyleSheet, Image, Button, ScrollView} from 'react-native';
 import styles from './recipeDetailScreen.styles';
-import {Ingredient, MainStackParamList, Recipe} from '../../types';
+import {
+  FormattedIngredient,
+  Ingredient,
+  MainStackParamList,
+  Recipe,
+  Navigation,
+} from '../../types';
 import {StackScreenProps} from '@react-navigation/stack';
-
-import CheckBox from '@react-native-community/checkbox';
-
-interface FormattedIngredient extends Ingredient {
-  used: boolean;
-}
+import Checkbox from '../../components/checkbox/Checkbox';
 
 const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
   navigation,
@@ -88,21 +78,34 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
         <Image source={{uri: image}} style={styles.recipeImage} />
       </View>
       <Text style={styles.recipeTitle}>{title}</Text>
-      <View style={styles.listContainer}>
-        {ingredientList.map(ingredient => {
-          return (
-            <View style={styles.listItem} key={ingredient.id}>
-              <CheckBox
-                disabled={false}
-                value={ingredient.used}
-                onValueChange={val =>
-                  updateIngredientSelection(ingredient, val)
-                }
-              />
-              <Text style={styles.listItemLabel}>{ingredient.name}</Text>
-            </View>
-          );
-        })}
+      <ScrollView style={styles.listContainer}>
+        {ingredientList.map(ingredient => (
+          <View style={styles.listItem} key={ingredient.id}>
+            <Checkbox
+              item={ingredient}
+              onToggle={updateIngredientSelection}
+              key={ingredient.id}
+            />
+            <Text style={styles.listItemLabel}>
+              {ingredient.name}
+              <Text>{` ${ingredient.amount} ${ingredient.unit}`}</Text>
+            </Text>
+          </View>
+        ))}
+        <View style={{backgroundColor: 'green'}}>
+          <Button
+            title="Make a Shopping List"
+            onPress={() =>
+              navigation.navigate(Navigation.ShoppingList, {
+                data: ingredientList,
+              })
+            }
+          />
+        </View>
+      </ScrollView>
+
+      <View style={{backgroundColor: 'yellow'}}>
+        <Button title="Get the Recipe" />
       </View>
     </View>
   );
