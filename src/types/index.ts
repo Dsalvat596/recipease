@@ -16,11 +16,8 @@ export type Ingredient = {
   unit?: string;
   unitLong?: string;
   unitShort?: string;
+  used?: boolean;
 };
-
-export interface FormattedIngredient extends Ingredient {
-  used: boolean;
-}
 
 export enum Operation {
   ADD_ITEM = 'ADD_ITEM',

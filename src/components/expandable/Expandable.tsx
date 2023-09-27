@@ -34,7 +34,16 @@ const Expandable: FC<AccordionItemProps> = ({data}): JSX.Element => {
   }
   const body = (
     <View style={styles.accordBody}>
-      <Text>{data.aisle}</Text>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Text>{'amount needed: '} </Text>
+        <Text>
+          {data.amount} {data.unit}
+        </Text>
+      </View>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Text>{'aisle: '} </Text>
+        <Text>{data.aisle}</Text>
+      </View>
     </View>
   );
 

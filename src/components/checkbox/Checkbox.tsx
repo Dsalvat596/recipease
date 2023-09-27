@@ -1,11 +1,11 @@
 import React, {FC, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import {FormattedIngredient} from '../../types';
+import {Ingredient} from '../../types';
 import {Fonts} from '../../themes/styles';
 
 type CheckBoxProps = {
-  item: FormattedIngredient;
+  item: Ingredient;
   onToggle: (item: any, val: boolean) => void;
 };
 

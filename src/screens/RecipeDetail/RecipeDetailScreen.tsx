@@ -1,13 +1,7 @@
 import React, {useState, useEffect, useCallback, FC} from 'react';
 import {View, Text, StyleSheet, Image, Button, ScrollView} from 'react-native';
 import styles from './recipeDetailScreen.styles';
-import {
-  FormattedIngredient,
-  Ingredient,
-  MainStackParamList,
-  Recipe,
-  Navigation,
-} from '../../types';
+import {Ingredient, MainStackParamList, Recipe, Navigation} from '../../types';
 import {StackScreenProps} from '@react-navigation/stack';
 import Checkbox from '../../components/checkbox/Checkbox';
 
@@ -26,12 +20,10 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
     usedIngredients,
   } = route.params.data;
 
-  const [ingredientList, setIngredientList] = useState<FormattedIngredient[]>(
-    [],
-  );
+  const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
 
   const createIngredientList = () => {
-    let newArr: Array<FormattedIngredient> = [];
+    let newArr: Array<Ingredient> = [];
 
     if (!!usedIngredients && usedIngredients.length > 0) {
       usedIngredients.forEach((ing: Ingredient) => {
@@ -56,7 +48,7 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
   }, []);
 
   const updateIngredientSelection = (
-    ingredientToUpdate: FormattedIngredient,
+    ingredientToUpdate: Ingredient,
     checked: boolean,
   ) => {
     const updatedIngredientList = [...ingredientList];
@@ -97,7 +89,7 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
             title="Make a Shopping List"
             onPress={() =>
               navigation.navigate(Navigation.ShoppingList, {
-                data: ingredientList,
+                data: ingredientList.filter(item => item.used === false),
               })
             }
           />
