@@ -1,9 +1,20 @@
 import React, {useState, useEffect, useCallback, FC} from 'react';
-import {View, Text, StyleSheet, Image, Button, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import styles from './recipeDetailScreen.styles';
 import {Ingredient, MainStackParamList, Recipe, Navigation} from '../../types';
 import {StackScreenProps} from '@react-navigation/stack';
 import Checkbox from '../../components/checkbox/Checkbox';
+import LoadingSpinner from '../../components/loading/LoadingSpinner';
+import {Colors} from '../../themes/styles';
+import useFetch from '../../hooks/useFetch';
 
 const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
   navigation,
@@ -19,6 +30,8 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
     unusedIngredients,
     usedIngredients,
   } = route.params.data;
+
+  // const [] = useFetch();
 
   const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
 
@@ -65,7 +78,7 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={{uri: image}} style={styles.recipeImage} />
       </View>
@@ -85,6 +98,7 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
           </View>
         ))}
         <View style={{backgroundColor: 'green'}}>
+          <Text>{'Missing Ingredient(s)?'}</Text>
           <Button
             title="Make a Shopping List"
             onPress={() =>
@@ -95,11 +109,11 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
           />
         </View>
       </ScrollView>
-
-      <View style={{backgroundColor: 'yellow'}}>
+      <ScrollView>
+        {/* <LoadingSpinner color={Colors.PRIMARY_COLOR} /> */}
         <Button title="Get the Recipe" />
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
