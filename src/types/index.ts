@@ -24,6 +24,12 @@ export enum Operation {
   DELETE_ITEM = 'DELETE_ITEM',
 }
 
+export enum Action {
+  INGREDIENT_AUTOCOMPLETE_SEARCH = 'INGREDIENT_AUTOCOMPLETE_SEARCH',
+  RECIPE_SEARCH = 'RECIPE_SEARCH',
+  RECIPE_INSTRUCTIONS_FETCH = 'RECIPE_DETAILS_FETCH',
+}
+
 export type Recipe = {
   id: number;
   image: string;

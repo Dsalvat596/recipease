@@ -8,14 +8,9 @@ import {
 } from 'react-native';
 import useFetch from '../../hooks/useFetch';
 import Autocomplete from 'react-native-autocomplete-input';
-import {Ingredient, Operation} from '../../types';
+import {Action, Ingredient, Operation} from '../../types';
 import {Fonts, Colors} from '../../themes/styles';
 import {formatIngredientsQueryString} from '../../helpers';
-
-export enum Action {
-  INGREDIENT_AUTOCOMPLETE_SEARCH = 'INGREDIENT_AUTOCOMPLETE_SEARCH',
-  RECIPE_SEARCH = 'RECIPE_SEARCH',
-}
 
 export type FetchParams = {
   action: Action;
