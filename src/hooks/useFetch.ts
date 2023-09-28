@@ -1,19 +1,14 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Config from 'react-native-config';
-
-const BASE_URL = `https://api.spoonacular.com/recipes/716429/information?apiKey=${Config.API_KEY}&includeNutrition=true`;
-const DEFAULT_PARAMS = ``;
+import {Action} from '../types';
+// const BASE_URL = `https://api.spoonacular.com/recipes/716429/information?apiKey=${Config.API_KEY}&includeNutrition=true`;
+// const DEFAULT_PARAMS = ``;
 
 const AUTOCOMPLETE_INGREDIENT_AUTOCOMPLETE_BASE = `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${Config.API_KEY}&query=`;
 const GET_RECIPE_BY_INGREDIENTS_BASE = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${Config.API_KEY}&ingredients=`;
 
-enum Action {
-  INGREDIENT_AUTOCOMPLETE_SEARCH = 'INGREDIENT_AUTOCOMPLETE_SEARCH',
-  RECIPE_SEARCH = 'RECIPE_SEARCH',
-}
-
-const useFetch = (action?: Action, queryParams?: string | string[]) => {
+const useFetch = (action?: Action, queryParams?: string | string[] | null) => {
   const [data, setData] = useState<Array<any>>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState('');
@@ -41,7 +36,7 @@ const useFetch = (action?: Action, queryParams?: string | string[]) => {
           setData(res.data);
         } catch (err) {
           console.error(err);
-          // setError(err.message);
+          setError(JSON.stringify(err));
         }
       } else if (action === Action.RECIPE_SEARCH) {
         if (queryParams.length > 0) {
@@ -58,6 +53,19 @@ const useFetch = (action?: Action, queryParams?: string | string[]) => {
             setLoading(false);
             setError(JSON.stringify(err));
           }
+        }
+      } else if (action === Action.RECIPE_INSTRUCTIONS_FETCH) {
+        try {
+          setLoading(true);
+          const res = await axios.get(
+            `https://api.spoonacular.com/recipes/${queryParams}/analyzedInstructions?apiKey=${Config.API_KEY}`,
+          );
+          setData(res.data);
+
+          setLoading(false);
+        } catch (err) {
+          console.error(err);
+          setError(JSON.stringify(err));
         }
       }
     }

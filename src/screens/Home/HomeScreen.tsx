@@ -5,9 +5,8 @@ import Search from '../../components/search';
 import CardStack from '../../components/cards/stack/CardStack';
 import {StackScreenProps} from '@react-navigation/stack';
 
-import {Action} from '../../components/search/Search';
 import {mockRecipeData} from '../../data';
-import {Recipe, MainStackParamList, Navigation} from '../../types';
+import {Recipe, MainStackParamList, Navigation, Action} from '../../types';
 
 const HomeScreen: FC<StackScreenProps<MainStackParamList>> = ({navigation}) => {
   const [recipeQuery, setRecipeQuery] = useState<string>('');

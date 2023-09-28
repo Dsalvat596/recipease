@@ -9,7 +9,13 @@ import {
   SafeAreaView,
 } from 'react-native';
 import styles from './recipeDetailScreen.styles';
-import {Ingredient, MainStackParamList, Recipe, Navigation} from '../../types';
+import {
+  Ingredient,
+  MainStackParamList,
+  Recipe,
+  Navigation,
+  Action,
+} from '../../types';
 import {StackScreenProps} from '@react-navigation/stack';
 import Checkbox from '../../components/checkbox/Checkbox';
 import LoadingSpinner from '../../components/loading/LoadingSpinner';
@@ -31,9 +37,8 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
     usedIngredients,
   } = route.params.data;
 
-  // const [] = useFetch();
-
   const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
+  const [recipeID, setRecipeID] = useState<string | null>(null);
 
   const createIngredientList = () => {
     let newArr: Array<Ingredient> = [];
@@ -55,6 +60,12 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
 
     setIngredientList(newArr);
   };
+
+  const {
+    data: recipeInstructions,
+    loading,
+    error,
+  } = useFetch(Action.RECIPE_INSTRUCTIONS_FETCH, recipeID);
 
   useEffect(() => {
     createIngredientList();
@@ -110,8 +121,22 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
         </View>
       </ScrollView>
       <ScrollView>
-        {/* <LoadingSpinner color={Colors.PRIMARY_COLOR} /> */}
-        <Button title="Get the Recipe" />
+        {recipeInstructions &&
+          recipeInstructions.length > 0 &&
+          !loading &&
+          recipeInstructions[0].steps.map(step => (
+            <View key={step.number}>
+              <Text>
+                {step.number}
+                {': '}
+              </Text>
+              <Text>{step.step}</Text>
+            </View>
+          ))}
+        {!!loading && <LoadingSpinner color={Colors.PRIMARY_COLOR} />}
+        {recipeInstructions.length < 1 && !loading && (
+          <Button title="Get the Recipe" onPress={() => setRecipeID(id)} />
+        )}
       </ScrollView>
     </SafeAreaView>
   );
