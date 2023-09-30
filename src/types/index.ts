@@ -46,6 +46,7 @@ export type Recipe = {
 
 export enum Navigation {
   HomeScreen = 'HomeScreen',
+  IngredientsSearch = 'IngredientsSearch',
   RecipeResults = 'RecipeResults',
   RecipeDetail = 'RecipeDetail',
   ShoppingList = 'ShoppingList',

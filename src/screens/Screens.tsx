@@ -1,23 +1,32 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import HomeScreen from './Home';
+import IngredientSearchScreen from './IngredientSearch';
 import RecipeResultsScreen from './RecipeResults/RecipeResultsScreen';
 import RecipeDetailScreen from './RecipeDetail/RecipeDetailScreen';
 import ShoppingList from './ShoppingList/ShoppingList';
+import HomeScreen from './Home/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
 const Router: FC = () => {
   const renderStack = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
-          name="main"
+          name="Home"
           component={HomeScreen}
           options={{
-            headerTitle: 'RECIPEZ',
-            headerBackButtonMenuEnabled: true,
+            title: 'Welcome',
+          }}
+        />
+        <Stack.Screen
+          name="IngredientsSearch"
+          component={IngredientSearchScreen}
+          options={{
+            headerTitle: 'What You Got?',
+            headerBackTitle: '',
+            headerBackVisible: false,
           }}
         />
         <Stack.Screen

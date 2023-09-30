@@ -1,51 +1,59 @@
-import React, {useState, useEffect, FC} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import useFetch from '../../hooks/useFetch';
-import Search from '../../components/search';
-import CardStack from '../../components/cards/stack/CardStack';
+import React, {useState, useEffect, useRef, FC} from 'react';
+import {View, Text, Animated, Easing} from 'react-native';
+import styles from './homeScreen.styles';
+
+import LottieView from 'lottie-react-native';
+import CustomBtn from '../../components/button/CustomBtn';
+import {Colors} from '../../themes/styles';
 import {StackScreenProps} from '@react-navigation/stack';
+import {MainStackParamList, Navigation} from '../../types';
 
-import {mockRecipeData} from '../../data';
-import {Recipe, MainStackParamList, Navigation, Action} from '../../types';
-
-const HomeScreen: FC<StackScreenProps<MainStackParamList>> = ({navigation}) => {
-  const [recipeQuery, setRecipeQuery] = useState<string>('');
-
-  const dummyDataForNow: Array<Recipe> = mockRecipeData;
-
-  const {
-    data: fetchedData,
-    loading,
-    error,
-  } = useFetch(Action.RECIPE_SEARCH, recipeQuery);
-
-  const updateRecipeSearch = (queryString: string) => {
-    setRecipeQuery(() => queryString);
-  };
+const HomeScreen: FC<StackScreenProps<MainStackParamList>> = ({
+  route,
+  navigation,
+}) => {
+  const animationRef = useRef<LottieView>(null);
+  const [animationFinished, setAnimationFinished] = useState(false);
+  const [fadeAnim] = useState(new Animated.Value(0));
 
   useEffect(() => {
-    // if (!loading && !!recipeQuery && fetchedData && fetchedData.length > 0) {
-    navigation.navigate(Navigation.RecipeResults, {data: dummyDataForNow});
-    // }
-  }, [recipeQuery, fetchedData, loading]);
+    animationRef.current?.play();
+  }, []);
 
+  useEffect(() => {
+    animationFinished &&
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+  }, [animationFinished, fadeAnim]);
   return (
     <View style={styles.container}>
-      {loading && <Text>{'LOADING.......>~~~~~~~~'}</Text>}
-      {!loading && !recipeQuery && (
-        <Search updateRecipeSearch={updateRecipeSearch} />
-      )}
+      <View style={styles.content}>
+        {!animationFinished && (
+          <LottieView
+            source={require('../../../assets/images/splash.lottie')}
+            //   imageAssetsFolder='' this is for android
+            autoPlay
+            onAnimationFinish={() => setAnimationFinished(true)}
+            loop={false}
+            speed={0.5}
+            style={styles.animation}
+          />
+        )}
+        <Animated.View style={{opacity: fadeAnim}}>
+          <CustomBtn
+            title={'Start'}
+            btnColor={'red'}
+            outlined
+            small
+            onPress={() => navigation.navigate(Navigation.IngredientsSearch)}
+          />
+        </Animated.View>
+      </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-});
 
 export default HomeScreen;
