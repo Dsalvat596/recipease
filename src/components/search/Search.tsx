@@ -10,7 +10,6 @@ import useFetch from '../../hooks/useFetch';
 import Autocomplete from 'react-native-autocomplete-input';
 import {Action, Ingredient, Operation} from '../../types';
 import {Fonts, Colors} from '../../themes/styles';
-import {formatIngredientsQueryString} from '../../helpers';
 
 export type FetchParams = {
   action: Action;
@@ -18,7 +17,7 @@ export type FetchParams = {
 };
 
 interface SearchProps {
-  updateRecipeSearch: (recipeStr: string) => void;
+  updateSelection: (ingrediont: Ingredient, operation: Operation) => void;
 }
 
 const Search = (props: SearchProps) => {
@@ -29,10 +28,6 @@ const Search = (props: SearchProps) => {
 
   // For Filtered Data
   const [query, setQuery] = useState('');
-  // For Selected Data
-  const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>(
-    [],
-  );
 
   const {
     data: fetchedData,
@@ -41,16 +36,7 @@ const Search = (props: SearchProps) => {
   } = useFetch(fetchAction, fetchParams);
 
   const updateSelection = (item: Ingredient, operation: Operation) => {
-    if (operation === Operation.ADD_ITEM) {
-      setSelectedIngredients(ings => [...ings, item]);
-    } else {
-    }
-  };
-
-  const getRecipes = () => {
-    const recipeStr = formatIngredientsQueryString(selectedIngredients);
-
-    props.updateRecipeSearch(recipeStr);
+    props.updateSelection(item, operation);
   };
 
   useEffect(() => {
@@ -97,32 +83,6 @@ const Search = (props: SearchProps) => {
               ) : null,
           }}
         />
-
-        <View style={styles.descriptionContainer}>
-          {selectedIngredients.length > 0 ? (
-            <>
-              <Text style={styles.infoText}>Selected Data</Text>
-              <View style={styles.ingredientsList}>
-                {selectedIngredients.map((item, idx) => (
-                  <TouchableOpacity
-                    key={`item+${idx}`}
-                    style={styles.ingredientsListItem}>
-                    <Text style={styles.ingredientText}>{item.name}</Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-              <View>
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={() => getRecipes()}>
-                  <Text style={styles.actionText}>{`FIND RECIPES`}</Text>
-                </TouchableOpacity>
-              </View>
-            </>
-          ) : (
-            <Text style={styles.infoText}>What Ingredients Do You Have?</Text>
-          )}
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -154,37 +114,7 @@ const styles = StyleSheet.create({
   ingredientsList: {
     alignItems: 'center',
   },
-  ingredientsListItem: {
-    backgroundColor: Colors.PRIMARY_COLOR,
-    marginVertical: 5,
-    padding: 10,
-    width: '70%',
-    borderRadius: 25,
-  },
-  ingredientText: {
-    textAlign: 'center',
-    fontSize: Fonts.FONT_SIZE_MEDIUM,
-    color: Colors.TEXT_LIGHT,
-  },
-  actionButton: {
-    backgroundColor: Colors.ACTION_COLOR,
-    padding: 15,
-    marginVertical: 8,
-    width: '70%',
-    borderRadius: 25,
-    alignSelf: 'center',
-  },
-  actionText: {
-    textAlign: 'center',
-    fontSize: Fonts.FONT_SIZE_LARGE,
-    fontWeight: Fonts.FONT_WEIGHT_HEAVY,
-    color: Colors.TEXT_LIGHT,
-  },
-  infoText: {
-    textAlign: 'center',
-    fontSize: Fonts.FONT_SIZE_MEDIUM,
-    color: Colors.TEXT_DARK,
-  },
+
   searchResults: {},
 });
 
