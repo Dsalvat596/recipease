@@ -1,5 +1,5 @@
 export type MainStackParamList = {
-  RecipeResults: {data: Array<Recipe>};
+  RecipeResults: {data: string};
   RecipeDetail: {data: Recipe};
   ShoppingList: {data: Array<Ingredient>};
 };

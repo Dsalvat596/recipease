@@ -15,30 +15,21 @@ const IngredientSearchScreen: FC<StackScreenProps<MainStackParamList>> = ({
 }) => {
   const [recipeQuery, setRecipeQuery] = useState<string>('');
 
-  const dummyDataForNow: Array<Recipe> = mockRecipeData;
-
-  const {
-    data: fetchedData,
-    loading,
-    error,
-  } = useFetch(Action.RECIPE_SEARCH, recipeQuery);
+  // const dummyDataForNow: Array<Recipe> = mockRecipeData;
 
   const updateRecipeSearch = (queryString: string) => {
     setRecipeQuery(() => queryString);
   };
 
   useEffect(() => {
-    if (!loading && !!recipeQuery && fetchedData && fetchedData.length > 0) {
-      navigation.navigate(Navigation.RecipeResults, {data: fetchedData});
+    if (!!recipeQuery && recipeQuery.length > 0) {
+      navigation.navigate(Navigation.RecipeResults, {data: recipeQuery});
     }
-  }, [recipeQuery, fetchedData, loading]);
+  }, [recipeQuery, navigation]);
 
   return (
     <View style={styles.container}>
-      {loading && <LoadingSpinner color={Colors.PRIMARY_COLOR} />}
-      {!loading && !recipeQuery && (
-        <Search updateRecipeSearch={updateRecipeSearch} />
-      )}
+      <Search updateRecipeSearch={updateRecipeSearch} />
     </View>
   );
 };
