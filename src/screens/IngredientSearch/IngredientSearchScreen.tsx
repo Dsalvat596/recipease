@@ -1,4 +1,4 @@
-import React, {useState, useEffect, FC} from 'react';
+import React, {useState, useEffect, FC, Fragment} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Search from '../../components/search';
 import {StackScreenProps} from '@react-navigation/stack';
@@ -37,8 +37,20 @@ const IngredientSearchScreen: FC<StackScreenProps<MainStackParamList>> = ({
 
   const updateSelection = (item: Ingredient, operation: Operation) => {
     if (operation === Operation.ADD_ITEM) {
-      setSelectedIngredients(ings => [...ings, item]);
+      if (
+        selectedIngredients.some((ing: Ingredient) => ing.name === item.name)
+      ) {
+        console.log('YOU ALREADY ADDED THAT ITEM, MORON!');
+        return;
+      } else {
+        setSelectedIngredients(ings => [...ings, item]);
+      }
     } else {
+      if (operation === Operation.DELETE_ITEM) {
+        setSelectedIngredients(prev =>
+          prev.filter(existingItem => existingItem.name !== item.name),
+        );
+      }
     }
   };
 
@@ -51,11 +63,16 @@ const IngredientSearchScreen: FC<StackScreenProps<MainStackParamList>> = ({
             <Text style={styles.infoText}>Selected Data</Text>
             <View style={styles.ingredientsList}>
               {selectedIngredients.map((item, idx) => (
-                <TouchableOpacity
-                  key={`item+${idx}`}
-                  style={styles.ingredientsListItem}>
+                <View key={`item+${idx}`} style={styles.ingredientsListItem}>
+                  <Text style={{width: 20}}>{''}</Text>
                   <Text style={styles.ingredientText}>{item.name}</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>
+                      updateSelection(item, Operation.DELETE_ITEM)
+                    }>
+                    <Text style={styles.removeBtn}>{'x'}</Text>
+                  </TouchableOpacity>
+                </View>
               ))}
             </View>
             <View>
@@ -95,15 +112,22 @@ const styles = StyleSheet.create({
   ingredientsList: {
     alignItems: 'center',
   },
+  removeBtn: {
+    color: Colors.TEXT_LIGHT,
+    fontSize: Fonts.FONT_SIZE_LARGE,
+    width: 20,
+    textAlign: 'center',
+  },
   ingredientsListItem: {
     backgroundColor: Colors.PRIMARY_COLOR,
     marginVertical: 5,
     padding: 10,
     width: '70%',
     borderRadius: 25,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   ingredientText: {
-    textAlign: 'center',
     fontSize: Fonts.FONT_SIZE_MEDIUM,
     color: Colors.TEXT_LIGHT,
   },
