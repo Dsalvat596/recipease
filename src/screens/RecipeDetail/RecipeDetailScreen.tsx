@@ -1,21 +1,14 @@
-import React, {useState, useEffect, useCallback, FC} from 'react';
+import React, {useState, useEffect, FC} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   Button,
   ScrollView,
   SafeAreaView,
 } from 'react-native';
 import styles from './recipeDetailScreen.styles';
-import {
-  Ingredient,
-  MainStackParamList,
-  Recipe,
-  Navigation,
-  Action,
-} from '../../types';
+import {Ingredient, MainStackParamList, Navigation, Action} from '../../types';
 import {StackScreenProps} from '@react-navigation/stack';
 import Checkbox from '../../components/checkbox/Checkbox';
 import LoadingSpinner from '../../components/loading/LoadingSpinner';
@@ -35,7 +28,7 @@ const RecipeDetailScreen: FC<StackScreenProps<MainStackParamList>> = ({
     title,
     unusedIngredients,
     usedIngredients,
-  } = route.params.data;
+  } = route.params?.data;
 
   const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
   const [recipeID, setRecipeID] = useState<string | null>(null);

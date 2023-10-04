@@ -17,7 +17,7 @@ const RecipeResultsScreen: FC<StackScreenProps<MainStackParamList>> = ({
     data: fetchedData,
     loading,
     error,
-  } = useFetch(Action.RECIPE_SEARCH, route.params.data);
+  } = useFetch(Action.RECIPE_SEARCH, route.params?.data);
 
   return (
     <View style={styles.container}>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Config from 'react-native-config';
 import {Action} from '../types';
@@ -13,7 +13,7 @@ const useFetch = (action?: Action, queryParams?: string | string[] | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState('');
 
-  const fetchData = useCallback(async () => {
+  const fetchData = React.useCallback(async () => {
     if (!queryParams) {
       // setLoading(true);
 

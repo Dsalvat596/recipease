@@ -6,22 +6,23 @@ import RecipeResultsScreen from './RecipeResults/RecipeResultsScreen';
 import RecipeDetailScreen from './RecipeDetail/RecipeDetailScreen';
 import ShoppingList from './ShoppingList/ShoppingList';
 import HomeScreen from './Home/HomeScreen';
+import {MainStackParamList, Navigation} from '../types/index';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<MainStackParamList>();
 
 const Router: FC = () => {
   const renderStack = () => {
     return (
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
-          name="Home"
+          name={Navigation.Home}
           component={HomeScreen}
           options={{
             title: 'Welcome',
           }}
         />
         <Stack.Screen
-          name="IngredientsSearch"
+          name={Navigation.IngredientSearch}
           component={IngredientSearchScreen}
           options={{
             headerTitle: 'What You Got?',
@@ -30,21 +31,21 @@ const Router: FC = () => {
           }}
         />
         <Stack.Screen
-          name="RecipeResults"
+          name={Navigation.RecipeResults}
           component={RecipeResultsScreen}
           options={{
             headerBackButtonMenuEnabled: true,
           }}
         />
         <Stack.Screen
-          name="RecipeDetail"
+          name={Navigation.RecipeDetail}
           component={RecipeDetailScreen}
           options={{
             headerBackButtonMenuEnabled: true,
           }}
         />
         <Stack.Screen
-          name="ShoppingList"
+          name={Navigation.ShoppingList}
           component={ShoppingList}
           options={{
             headerBackButtonMenuEnabled: true,

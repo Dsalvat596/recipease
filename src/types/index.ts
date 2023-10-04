@@ -1,6 +1,8 @@
 export type MainStackParamList = {
+  Home: undefined;
+  IngredientSearch: undefined;
   RecipeResults: {data: string};
-  RecipeDetail: {data: Recipe};
+  RecipeDetail: {data: Recipe[] | Recipe};
   ShoppingList: {data: Array<Ingredient>};
 };
 
@@ -45,8 +47,8 @@ export type Recipe = {
 };
 
 export enum Navigation {
-  HomeScreen = 'HomeScreen',
-  IngredientsSearch = 'IngredientsSearch',
+  Home = 'Home',
+  IngredientSearch = 'IngredientSearch',
   RecipeResults = 'RecipeResults',
   RecipeDetail = 'RecipeDetail',
   ShoppingList = 'ShoppingList',

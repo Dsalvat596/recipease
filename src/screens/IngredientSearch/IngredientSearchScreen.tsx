@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Search from '../../components/search';
 import {StackScreenProps} from '@react-navigation/stack';
 
-import {mockRecipeData} from '../../data';
+// import {mockRecipeData} from '../../data';
 import {
   MainStackParamList,
   Navigation,
