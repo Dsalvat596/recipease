@@ -1,5 +1,5 @@
-import React, {useEffect, useState, FC} from 'react';
-import {View, StyleSheet, Text, Image, ImageBackground} from 'react-native';
+import React, {useState, FC} from 'react';
+import {View, StyleSheet} from 'react-native';
 import Card from '../card';
 import Swiper from 'react-native-deck-swiper';
 import {Recipe} from '../../../types';
@@ -36,11 +36,12 @@ const CardStack: FC<CardStackProps> = props => {
         stackSize={props.data.length}
         stackScale={10}
         infinite={true}
+        verticalSwipe={false}
         stackSeparation={14}
         disableTopSwipe={true}
         disableBottomSwipe={true}
-        animateOverlayLabelsOpacity={true}
-        animateCardOpacity={true}
+        animateCardOpacity={false}
+        disableLeftSwipe={true}
         // overlayLabels={{
         //   left: {
         //     title: 'NOPE',

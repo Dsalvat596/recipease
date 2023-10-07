@@ -37,6 +37,8 @@ const Search = (props: SearchProps) => {
 
   const updateSelection = (item: Ingredient, operation: Operation) => {
     props.updateSelection(item, operation);
+    //clear the autocomplete
+    setQuery(() => '');
   };
 
   useEffect(() => {
@@ -56,16 +58,15 @@ const Search = (props: SearchProps) => {
         <Autocomplete
           autoCapitalize="none"
           clearButtonMode={'always'}
-          //   defaultValue={defaultText}
+          defaultValue={query}
           keyboardType={'ascii-capable'}
           // style={{
           //   height: 40,
           // }}
           autoCorrect={false}
           containerStyle={styles.autocompleteContainer}
-          // listStyle={{maxHeight: 300}}
           data={fetchedData}
-          inputContainerStyle={styles.autocompleteContainer}
+          inputContainerStyle={styles.inputContainer}
           listContainerStyle={styles.searchResults}
           onChangeText={text => setQuery(text)}
           placeholder="Enter an ingredient..."
@@ -75,6 +76,7 @@ const Search = (props: SearchProps) => {
             renderItem: ({item}) =>
               query.length > 2 ? (
                 <TouchableOpacity
+                  style={styles.searchItemContainer}
                   onPress={() => {
                     updateSelection(item, Operation.ADD_ITEM);
                   }}>
@@ -90,21 +92,32 @@ const Search = (props: SearchProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.SECONDARY_COLOR,
+    backgroundColor: Colors.PRIMARY_COLOR,
     flex: 1,
     paddingHorizontal: 18,
     paddingVertical: 40,
   },
-  autocompleteContainer: {
-    backgroundColor: Colors.BG_LIGHT,
-    borderWidth: 1,
-    borderColor: 'lightgrey',
+  inputContainer: {
+    padding: 5,
+    // marginVertical: 10,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#eee',
+    borderRadius: 10,
+    width: '100%',
+    backgroundColor: 'white',
   },
+  autocompleteContainer: {},
   descriptionContainer: {
     flex: 1,
     justifyContent: 'center',
   },
-  searchItem: {color: Colors.TEXT_DARK},
+  searchItemContainer: {
+    borderColor: Colors.BG_LIGHT,
+    borderTopWidth: 1,
+    padding: 5,
+  },
+  searchItem: {color: Colors.TEXT_DARK, fontSize: 16},
   itemText: {
     fontSize: Fonts.FONT_SIZE_MEDIUM,
     paddingTop: 5,
@@ -114,8 +127,10 @@ const styles = StyleSheet.create({
   ingredientsList: {
     alignItems: 'center',
   },
-
-  searchResults: {},
+  searchResults: {
+    width: '97%',
+    alignSelf: 'center',
+  },
 });
 
 export default Search;

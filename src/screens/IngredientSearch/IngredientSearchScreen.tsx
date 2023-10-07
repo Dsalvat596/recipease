@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
     fontSize: Fonts.FONT_SIZE_MEDIUM,
     color: Colors.TEXT_DARK,
   },
-  searchResults: {},
 });
 
 export default IngredientSearchScreen;

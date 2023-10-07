@@ -48,7 +48,7 @@ const HomeScreen: FC<StackScreenProps<MainStackParamList>> = ({
             btnColor={'red'}
             outlined
             small
-            onPress={() => navigation.navigate(Navigation.IngredientsSearch)}
+            onPress={() => navigation.navigate(Navigation.IngredientSearch)}
           />
         </Animated.View>
       </View>

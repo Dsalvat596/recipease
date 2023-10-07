@@ -6,7 +6,7 @@ import {Action} from '../types';
 // const DEFAULT_PARAMS = ``;
 
 const AUTOCOMPLETE_INGREDIENT_AUTOCOMPLETE_BASE = `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${Config.API_KEY}&query=`;
-const GET_RECIPE_BY_INGREDIENTS_BASE = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${Config.API_KEY}&ingredients=`;
+const GET_RECIPE_BY_INGREDIENTS_BASE = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${Config.API_KEY}&ranking=1&sort=max-used-ingredients&ingredients=`;
 
 const useFetch = (action?: Action, queryParams?: string | string[] | null) => {
   const [data, setData] = useState<Array<any>>([]);
