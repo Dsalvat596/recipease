@@ -50,7 +50,7 @@ const LoadingSpinner = ({color, durationMs = 1000}: Props): JSX.Element => {
   );
 };
 
-const height = 24;
+const height = 58;
 
 const styles = StyleSheet.create({
   container: {
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: height / 2,
-    borderWidth: 4,
+    borderWidth: 10,
     opacity: 0.25,
   },
   progress: {
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'transparent',
-    borderWidth: 4,
+    borderWidth: 10,
     position: 'absolute',
   },
 });

@@ -85,10 +85,10 @@ const CardStack: FC<CardStackProps> = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
+    //   flex: 1,
+    //   backgroundColor: colors.white,
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
   },
 });
 
