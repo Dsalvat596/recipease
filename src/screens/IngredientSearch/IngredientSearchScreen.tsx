@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
   infoText: {
     textAlign: 'center',
     fontSize: Fonts.FONT_SIZE_MEDIUM,
+    fontFamily: 'Poppins-Bold',
     color: Colors.TEXT_DARK,
   },
 });

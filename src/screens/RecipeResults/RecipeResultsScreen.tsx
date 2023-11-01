@@ -19,7 +19,6 @@ const RecipeResultsScreen: FC<StackScreenProps<MainStackParamList>> = ({
     loading,
     error,
   } = useFetch(Action.RECIPE_SEARCH, route.params?.data);
-  const fart = false;
   const animationRef = useRef<LottieView>(null);
 
   useEffect(() => {
