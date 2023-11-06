@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   content: {
     // backgroundColor: 'purple',
     bottom: 25,
+    fontFamily: Fonts.FONT_FAMILY_LIGHT,
   },
   animation: {
     height: 250,

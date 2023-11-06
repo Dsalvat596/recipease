@@ -7,7 +7,7 @@ import {mockRecipeData} from '../../data';
 import {Action, MainStackParamList, Recipe} from '../../types';
 import {StackScreenProps} from '@react-navigation/stack';
 import LoadingSpinner from '../../components/loading/LoadingSpinner';
-import {Colors} from '../../themes/styles';
+import {Colors, Fonts} from '../../themes/styles';
 import LottieView from 'lottie-react-native';
 
 const RecipeResultsScreen: FC<StackScreenProps<MainStackParamList>> = ({
@@ -19,7 +19,6 @@ const RecipeResultsScreen: FC<StackScreenProps<MainStackParamList>> = ({
     loading,
     error,
   } = useFetch(Action.RECIPE_SEARCH, route.params?.data);
-  const fart = false;
   const animationRef = useRef<LottieView>(null);
 
   useEffect(() => {
@@ -50,7 +49,9 @@ const RecipeResultsScreen: FC<StackScreenProps<MainStackParamList>> = ({
             speed={0.5}
             style={styles.animation}
           />
-          <Text style={styles.notFoundText}>{'Please go back and try'}</Text>
+          <Text style={styles.notFoundText}>
+            {'Please go back and try again'}
+          </Text>
         </View>
       )}
       {!loading && !!fetchedData && fetchedData.length > 0 && (
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
   },
   notFoundText: {
     textAlign: 'center',
+    fontFamily: Fonts.FONT_FAMILY_MEDIUM,
   },
 });
 

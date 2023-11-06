@@ -498,8 +498,12 @@ PODS:
     - React-jsi (= 0.72.4)
     - React-logger (= 0.72.4)
     - React-perflogger (= 0.72.4)
+  - ReactNativeUiLib (4.1.1):
+    - React
   - RNCCheckbox (0.5.16):
     - BEMCheckBox (~> 1.4)
+    - React-Core
+  - RNGestureHandler (2.13.2):
     - React-Core
   - RNReanimated (3.5.4):
     - DoubleConversion
@@ -533,6 +537,8 @@ PODS:
   - RNScreens (3.25.0):
     - React-Core
     - React-RCTImage
+  - RNSVG (13.4.0):
+    - React-Core
   - RNVectorIcons (10.0.0):
     - React-Core
   - SocketRocket (0.6.1)
@@ -607,9 +613,12 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - ReactNativeUiLib (from `../node_modules/react-native-ui-lib`)
   - "RNCCheckbox (from `../node_modules/@react-native-community/checkbox`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -718,12 +727,18 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  ReactNativeUiLib:
+    :path: "../node_modules/react-native-ui-lib"
   RNCCheckbox:
     :path: "../node_modules/@react-native-community/checkbox"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -786,9 +801,12 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 4941cc1b3cf08b792fbf666342c9fc95f1969035
   React-utils: b79f2411931f9d3ea5781404dcbb2fa8a837e13a
   ReactCommon: 4b2bdcb50a3543e1c2b2849ad44533686610826d
+  ReactNativeUiLib: 18c6c7cae814e9fb4442b6d9a5fb6f50ae36da98
   RNCCheckbox: 75255b03e604bbcc26411eb31c4cbe3e3865f538
+  RNGestureHandler: bb86e378287f7713baf3ca205423eb8109790022
   RNReanimated: ab2e96c6d5591c3dfbb38a464f54c8d17fb34a87
   RNScreens: 85d3880b52d34db7b8eeebe2f1a0e807c05e69fa
+  RNSVG: 07dbd870b0dcdecc99b3a202fa37c8ca163caec2
   RNVectorIcons: 8b5bb0fa61d54cd2020af4f24a51841ce365c7e9
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 3efc43e0d48686ce2e8c60f99d4e6bd349aff981
