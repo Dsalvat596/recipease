@@ -6,11 +6,21 @@ export const Fonts = {
   FONT_WEIGHT_LIGHT: '200',
   FONT_WEIGHT_MEDIUM: '600',
   FONT_WEIGHT_HEAVY: '800',
+
+  FONT_FAMILY_REGULAR: 'Poppins-Regular',
+  FONT_FAMILY_BOLD: 'Poppins-Bold',
+  FONT_FAMILY_BLACK: 'Poppins-Black',
+  FONT_FAMILY_MEDIUM: 'Poppins-Medium',
+  FONT_FAMILY_LIGHT: 'Poppins-Light',
 };
 
 export const Colors = {
-  PRIMARY_COLOR: '#51db7b',
-  SECONDARY_COLOR: '#f2ec74',
+  PRIMARY_COLOR: '#34d399',
+  PRIMARY_COLOR_LIGHT: '#a7f3d0',
+  PRIMARY_COLOR_DARK: '#065F46',
+  SECONDARY_COLOR: '#FDE047',
+  SECONDARY_COLOR_LIGHT: '#FEF9C3',
+  SECONDARY_COLOR_DARK: '#ca8a04',
   ACTION_COLOR: '#db402c',
   BG_LIGHT: '#f5f4ed',
   BG_DARK: '#636362',
