@@ -23,8 +23,6 @@ const IngredientSearchScreen: FC<StackScreenProps<MainStackParamList>> = ({
     [],
   );
 
-  // const dummyDataForNow: Array<Recipe> = mockRecipeData;
-
   useEffect(() => {
     const recipeStr = formatIngredientsQueryString(selectedIngredients);
 

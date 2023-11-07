@@ -9,6 +9,7 @@ import {StackScreenProps} from '@react-navigation/stack';
 import LoadingSpinner from '../../components/loading/LoadingSpinner';
 import {Colors, Fonts} from '../../themes/styles';
 import LottieView from 'lottie-react-native';
+import Slider from '../../components/slider';
 
 const RecipeResultsScreen: FC<StackScreenProps<MainStackParamList>> = ({
   navigation,
@@ -55,7 +56,8 @@ const RecipeResultsScreen: FC<StackScreenProps<MainStackParamList>> = ({
         </View>
       )}
       {!loading && !!fetchedData && fetchedData.length > 0 && (
-        <CardStack data={fetchedData} />
+        // <CardStack data={fetchedData} />
+        <Slider data={fetchedData} />
       )}
     </SafeAreaView>
   );
